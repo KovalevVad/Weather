@@ -12,6 +12,11 @@ const searchLocation = document.querySelector('#searchLocation')
 const textLocation = document.querySelector('#location')
 const API_KEY = '69bab6cdf6d45a75b4617f2f8c765865'
 
+const URL_CITY = 'https://raw.githubusercontent.com/lkozyr/CityList/master/city.list3.js'
+
+fetch(URL_CITY)
+  .then(data => console.log(data))
+
 function getWeatherByCity(city) {
   const UNITS = 'metric'
 
@@ -51,7 +56,7 @@ function updateLocation(location) {
 navigator.geolocation.getCurrentPosition(position => {
   const { latitude, longitude } = position.coords;
 
-  const namePosition = appFetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`)
+  const namePosition = appFetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`)
   namePosition
     .then(data => updateLocation(data[0].name))
 });
