@@ -3,6 +3,7 @@
   --second-family: "Istok Web", sans-serif;
 
   --white: #fff;
+  --grey: rgba(161, 156, 160, 0.3);
 
   font-family: var(--font-family);
 }
@@ -77,6 +78,7 @@ h1 {
   background: rgba(255, 255, 255, 0.04);
   width: 526px;
   height: 100vh;
+  background-color: var(--grey);
 
   right: 0;
   padding-left: 35px;
