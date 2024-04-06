@@ -25,14 +25,18 @@
         <img src="./img/signes/Cloudy.svg" alt="Cloudy">
       </div>
       <div class="wrapper__search">
-        <input type="text" placeholder="Search Location...">
-        <img src="./img/signes/search.svg" alt="search">
+        <input type="text" placeholder="Search Location..." class="searchLocation" id="autoComplete1" autocomplete="off">
+        <button id="buttonSearch"><img src="./img/signes/search.svg" alt="" ></button>
+      </div>
+      <div class="result__box1">
       </div>
     </div>
     <div class="rightContent">
       <div class="rightContent__search">
-        <input type="text" placeholder="Search Location..." id="searchLocation">
-        <img src="./img/signes/search.svg" alt="search">
+        <input type="text" placeholder="Search Location..." class="searchLocation" id="autoComplete" autocomplete="off">
+        <button id="buttonSearch"><img src="./img/signes/search.svg" alt="" ></button>
+      </div>
+      <div class="result__box">
       </div>
       <a href="">Weather Details...</a>
       <div class="rightContent__details">
@@ -79,5 +83,6 @@
   </main>
   <script type="module" src="./script/app.js" defer></script>
   <script type="module" src="./script/time.js" defer></script>
+  <script type="module" src="./script/autoComplete.js" defer></script>
 </body>
 </html>

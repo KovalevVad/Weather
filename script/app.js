@@ -8,14 +8,10 @@ const humadity = document.querySelector('#humadity')
 const clouds = document.querySelector('#clouds')
 const temp = document.querySelector('h1')
 const weatherName = document.querySelector('h2')
-const searchLocation = document.querySelector('#searchLocation')
+const searchLocation = document.querySelectorAll('.searchLocation')
+const buttonSearchLocation = document.querySelectorAll('#buttonSearch')
 const textLocation = document.querySelector('#location')
 const API_KEY = '69bab6cdf6d45a75b4617f2f8c765865'
-
-const URL_CITY = 'https://raw.githubusercontent.com/lkozyr/CityList/master/city.list3.js'
-
-fetch(URL_CITY)
-  .then(data => console.log(data))
 
 function getWeatherByCity(city) {
   const UNITS = 'metric'
@@ -23,12 +19,21 @@ function getWeatherByCity(city) {
   return appFetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=${UNITS}`)
 }
 
-searchLocation.addEventListener('keydown', function(e) {
-  if (e.code === 'Enter') {
-    console.log(searchLocation.value)
-    updateLocation(searchLocation.value)
-  }
-})
+searchLocation.forEach((item) => {
+  item.addEventListener('keydown', function(e) {
+    if (e.code === 'Enter') {
+      updateLocation(item.value)
+      item.value = ''
+    }
+  });
+
+  buttonSearchLocation.forEach((element) => {
+    element.addEventListener('click', function() {
+      updateLocation(item.value)
+      item.value = ''
+    })
+  })
+});
 
 function updateLocation(location) {
   getWeatherByCity(location)
@@ -52,14 +57,27 @@ function updateLocation(location) {
   })
 }
 
+const options = {
+  enableHighAccuracy: true,
+  maximumAge: 1000,
+  timeout: 3600
+}
 
-navigator.geolocation.getCurrentPosition(position => {
-  const { latitude, longitude } = position.coords;
+navigator.geolocation.getCurrentPosition(success, error, options)
+
+function error() {
+  alert('Где ты вообще...'); // на случай ошибки
+}
+
+function success(position) {
+  const { latitude, longitude } = position.coords
 
   const namePosition = appFetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`)
   namePosition
     .then(data => updateLocation(data[0].name))
-});
+}
+
+
 
 
 

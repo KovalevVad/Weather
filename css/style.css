@@ -3,6 +3,8 @@
   --second-family: "Istok Web", sans-serif;
 
   --white: #fff;
+
+  font-family: var(--font-family);
 }
 
 main {
@@ -42,7 +44,6 @@ main {
 }
 
 h1 {
-  font-family: var(--font-family);
   font-weight: 400;
   font-size: 143px;
   letter-spacing: -0.08em;
@@ -58,7 +59,6 @@ h1 {
 .wrapper__content-location > span:first-child,
 .wrapper__content-location > span:last-child,
 .rightContent > a  {
-  font-family: var(--font-family);
   font-weight: 400;
   font-size: 60px;
   color: var(--white);
@@ -95,16 +95,47 @@ h1 {
 
 .rightContent__search > input,
 .wrapper__search > input {
-  font-family: var(--font-family);
   font-weight: 400;
   font-size: 20px;
   color: rgba(255, 255, 255, 0.7);
 }
 
-.rightContent__search > img,
+.rightContent__search > button,
 .wrapper__search > img {
   position: absolute;
   right: 0;
+}
+
+.rightContent__search > button {
+  cursor: pointer;
+}
+
+.result__box,
+.result__box1 {
+  width: 371px;
+  z-index: 999;
+  position: absolute;
+  background-color: var(--white);
+  margin-top: 50px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.result__box ul,
+.result__box1 ul {
+  padding: 10px 10px;
+}
+
+.result__box ul li,
+.result__box1 ul li {
+  list-style: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.result__box ul li:hover,
+.result__box1 ul li:hover{
+  background-color: #e9f3ff;
 }
 
 .rightContent > a {
@@ -123,7 +154,6 @@ h1 {
 }
 
 h2 {
-  font-family: var(--font-family);
   font-weight: 500;
   font-size: 18px;
   text-transform: uppercase;
@@ -138,14 +168,12 @@ h2 {
 }
 
 .rightContent__details-item  span:last-child {
-  font-family: var(--font-family);
   font-weight: 400;
   font-size: 18px;
   color: var(--white);
 }
 
 .rightContent__details-item span:first-child {
-  font-family: var(--font-family);
   font-weight: 400;
   font-size: 18px;
   color: rgba(255, 255, 255, 0.7);
@@ -162,10 +190,20 @@ h2 {
   display: none;
 }
 
+.result__box1 {
+  width: 305px;
+  z-index: 999;
+  margin-top: 0px;
+  left: 424px;
+  top: 60px;
+}
+
+
 @media (min-width:376px) and (max-width: 768px) {
   .wrapper {
     position: absolute;
     width: 768px;
+    height: 1049px;
     top: 0;
   }
 
@@ -214,6 +252,7 @@ h2 {
   .wrapper__search {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 305px;
     height: 45px;
     left: 424px;
@@ -223,6 +262,8 @@ h2 {
   .wrapper__search > input {
     font-size: 18px;
   }
+
+
 }
 
 @media (max-width:414px) {
@@ -246,7 +287,6 @@ h2 {
   }
 
   .wrapper__search > input {
-    font-family: var(--font-family);
     font-weight: 400;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.7);
