@@ -1,11 +1,14 @@
 :root {
-  --font-family: "Roboto", sans-serif;
   --second-family: "Istok Web", sans-serif;
 
   --white: #fff;
   --grey: rgba(161, 156, 160, 0.3);
+  --whiteOpacity14: rgba(255, 255, 255, 0.14);
+  --whiteOpacity04 : rgba(255, 255, 255, 0.04);
+  --whiteOpacity7: rgba(255, 255, 255, 0.7);
+  --blue-ligth: #e9f3ff;
 
-  font-family: var(--font-family);
+  font-family: "Roboto", sans-serif;
 }
 
 main {
@@ -73,9 +76,9 @@ h1 {
   display: flex;
   flex-direction: column;
   position: absolute;
-  border-left: 5px solid rgba(255, 255, 255, 0.14);
+  border-left: 5px solid var(--whiteOpacity14);
   backdrop-filter: blur(19px);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--whiteOpacity04);
   width: 526px;
   height: 100vh;
   background-color: var(--grey);
@@ -99,7 +102,7 @@ h1 {
 .wrapper__search > input {
   font-weight: 400;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--whiteOpacity7);
 }
 
 .rightContent__search > button,
@@ -137,7 +140,7 @@ h1 {
 
 .result__box ul li:hover,
 .result__box1 ul li:hover{
-  background-color: #e9f3ff;
+  background-color: var(--blue-ligth);
 }
 
 .rightContent > a {
@@ -178,7 +181,7 @@ h2 {
 .rightContent__details-item span:first-child {
   font-weight: 400;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--whiteOpacity7);
 }
 
 .rightContent__details-item > div {
@@ -212,7 +215,7 @@ h2 {
   .rightContent {
     align-items: center;
     border-left: 0px;
-    border-top: 5px solid rgba(255, 255, 255, 0.14);
+    border-top: 5px solid var(--whiteOpacity14);
     width: 767px;
     height: 597px;
     bottom: 0;
@@ -291,7 +294,7 @@ h2 {
   .wrapper__search > input {
     font-weight: 400;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--whiteOpacity7);
   }
 
   .wrapper__search > img {
@@ -303,8 +306,7 @@ h2 {
     align-items: center;
     border-left: 0px;
     bottom: 0;
-    border-top: 5px solid rgba(255, 255, 255, 0.14);
-    width: 100%;
+    border-top: 5px solid var(--whiteOpacity14);
     height: 497px;
   }
 
@@ -351,10 +353,7 @@ h2 {
     font-size: 14px;
   }
 
-  .rightContent__details-item span:first-child {
-    font-size: 14px;
-  }
-
+  .rightContent__details-item span:first-child,
   .rightContent__details-item span:last-child {
     font-size: 14px;
   }

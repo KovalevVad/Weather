@@ -1,6 +1,6 @@
 import { appFetch } from "./helper.js";
+import { URL_CITY } from "./constants.js";
 
-const URL_CITY = 'https://raw.githubusercontent.com/lkozyr/CityList/master/city.list.json'
 
 let listCity = []
 async function getData() {
@@ -13,10 +13,10 @@ async function getData() {
 getData();
 
 const resultBox = document.querySelector('.result__box')
-const inputBox = document.getElementById("autoComplete")
+const inputBoxDesktop = document.getElementById("autoComplete")
 
 const resultBox1 = document.querySelector('.result__box1')
-const inputBox1 = document.getElementById("autoComplete1")
+const inputBoxTablet = document.getElementById("autoComplete1")
 
 
 function autoComplete(inputBox, resultBox) {
@@ -59,5 +59,5 @@ function autoComplete(inputBox, resultBox) {
   }
 }
 
-autoComplete(inputBox, resultBox) //desktop1
-autoComplete(inputBox1, resultBox1) //tablet
+autoComplete(inputBoxDesktop, resultBox) //desktop
+autoComplete(inputBoxTablet, resultBox1) //tablet

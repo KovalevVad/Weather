@@ -1,5 +1,6 @@
 import { appFetch } from "./helper.js";
 import { fetchByImage } from './imageApi.js'
+import { API_KEY } from "./constants.js";
 
 const tempMax = document.querySelector('#tempMax')
 const tempMin = document.querySelector('#tempMin')
@@ -11,7 +12,6 @@ const weatherName = document.querySelector('h2')
 const searchLocation = document.querySelectorAll('.searchLocation')
 const buttonSearchLocation = document.querySelectorAll('#buttonSearch')
 const textLocation = document.querySelector('#location')
-const API_KEY = '69bab6cdf6d45a75b4617f2f8c765865'
 
 function getWeatherByCity(city) {
   const UNITS = 'metric'
@@ -38,15 +38,14 @@ searchLocation.forEach((item) => {
 function updateLocation(location) {
   getWeatherByCity(location)
   .then(data => {
-    console.log(data)
-    temp.innerHTML = Math.round(data.main.temp) + '°'
-    tempMax.innerHTML = data.main.temp_max + '°'
-    tempMin.innerHTML = data.main.temp_min + '°'
-    humadity.innerHTML = data.main.humidity + '%'
-    clouds.innerHTML = data.clouds.all + '%'
-    wind.innerHTML = data.wind.speed + 'km/h'
-    textLocation.innerHTML = data.name
-    const weather = data.weather[0].description
+    temp.innerHTML = `${Math.round(data.main.temp)}` + '°'
+    tempMax.innerHTML = `${data.main.temp_max}` + '°'
+    tempMin.innerHTML = `${data.main.temp_min}` + '°'
+    humadity.innerHTML = `${data.main.humidity}` + '%'
+    clouds.innerHTML = `${data.clouds.all}` + '%'
+    wind.innerHTML = `${data.wind.speed}` + 'km/h'
+    textLocation.innerHTML = `${data.name}`
+    const weather = `${data.weather[0].description}`
     weatherName.innerHTML = weather
 
     fetchByImage(weather)

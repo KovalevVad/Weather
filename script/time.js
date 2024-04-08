@@ -1,9 +1,7 @@
-import { aormatedTime  } from "./helper.js";
+import { aormatedTime } from "./helper.js";
+import { days, month} from "./constants.js"
 
 const textDate = document.querySelector('#textDate')
-
-let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-let month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 function updateTime() {
   let date = new Date();
@@ -13,9 +11,8 @@ function updateTime() {
   textDate.innerHTML = str
 }
 
-
 updateTime()
-setTimeout(() => {
+setInterval(() => {
   updateTime()
 }, 1000)
 
