@@ -1,82 +1,81 @@
 import { appFetch } from "./helper.js";
-import { fetchByImage } from './imageApi.js'
-import { API_KEY } from "./constants.js";
+import { fetchByImage } from "./imageApi.js";
+import {API_KEY} from "./constants.js"
 
-const tempMax = document.querySelector('#tempMax')
-const tempMin = document.querySelector('#tempMin')
-const wind = document.querySelector('#wind')
-const humadity = document.querySelector('#humadity')
-const clouds = document.querySelector('#clouds')
-const temp = document.querySelector('h1')
-const weatherName = document.querySelector('h2')
-const searchLocation = document.querySelectorAll('.searchLocation')
-const buttonSearchLocation = document.querySelectorAll('#buttonSearch')
-const textLocation = document.querySelector('#location')
+const tempMax = document.querySelector("#tempMax");
+const tempMin = document.querySelector("#tempMin");
+const wind = document.querySelector("#wind");
+const humadity = document.querySelector("#humadity");
+const clouds = document.querySelector("#clouds");
+const temp = document.querySelector("h1");
+const weatherName = document.querySelector("h2");
+const searchLocation = document.querySelectorAll(".searchLocation");
+const buttonSearchLocation = document.querySelectorAll("#buttonSearch");
+const textLocation = document.querySelector("#location");
+
 
 function getWeatherByCity(city) {
-  const UNITS = 'metric'
+  const UNITS = "metric";
 
-  return appFetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=${UNITS}`)
+  return appFetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=${UNITS}`
+  );
 }
 
 searchLocation.forEach((item) => {
-  item.addEventListener('keydown', function(e) {
-    if (e.code === 'Enter') {
-      updateLocation(item.value)
-      item.value = ''
+  item.addEventListener("keydown", function (e) {
+    if (e.code === "Enter") {
+      updateLocation(item.value);
+      item.value = "";
     }
   });
 
   buttonSearchLocation.forEach((element) => {
-    element.addEventListener('click', function() {
-      updateLocation(item.value)
-      item.value = ''
-    })
-  })
+    element.addEventListener("click", function () {
+      updateLocation(item.value);
+      item.value = "";
+    });
+  });
 });
 
 function updateLocation(location) {
-  getWeatherByCity(location)
-  .then(data => {
-    temp.innerHTML = `${Math.round(data.main.temp)}` + '°'
-    tempMax.innerHTML = `${data.main.temp_max}` + '°'
-    tempMin.innerHTML = `${data.main.temp_min}` + '°'
-    humadity.innerHTML = `${data.main.humidity}` + '%'
-    clouds.innerHTML = `${data.clouds.all}` + '%'
-    wind.innerHTML = `${data.wind.speed}` + 'km/h'
-    textLocation.innerHTML = `${data.name}`
-    const weather = `${data.weather[0].description}`
-    weatherName.innerHTML = weather
+  getWeatherByCity(location).then((data) => {
+    temp.innerHTML = `${Math.round(data.main.temp)}` + "°";
+    tempMax.innerHTML = `${data.main.temp_max}` + "°";
+    tempMin.innerHTML = `${data.main.temp_min}` + "°";
+    humadity.innerHTML = `${data.main.humidity}` + "%";
+    clouds.innerHTML = `${data.clouds.all}` + "%";
+    wind.innerHTML = `${data.wind.speed}` + "km/h";
+    textLocation.innerHTML = `${data.name}`;
+    const weather = `${data.weather[0].description}`;
+    weatherName.innerHTML = weather;
 
-    fetchByImage(weather)
-     .then(data => {
-      const url = data.urls.regular
-      document.querySelector('main').style.cssText = `background-image: url(${url})`
-      })
-  })
+    fetchByImage(weather).then((data) => {
+      const url = data.urls.regular;
+      document.querySelector(
+        "main"
+      ).style.cssText = `background-image: url(${url})`;
+    });
+  });
 }
 
 const options = {
   enableHighAccuracy: true,
   maximumAge: 1000,
-  timeout: 3600
-}
+  timeout: 3600,
+};
 
-navigator.geolocation.getCurrentPosition(success, error, options)
+navigator.geolocation.getCurrentPosition(success, error, options);
 
 function error() {
-  alert('Где ты вообще...'); // на случай ошибки
+  alert("Где ты вообще..."); // на случай ошибки
 }
 
 function success(position) {
-  const { latitude, longitude } = position.coords
+  const { latitude, longitude } = position.coords;
 
-  const namePosition = appFetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`)
-  namePosition
-    .then(data => updateLocation(data[0].name))
+  const namePosition = appFetch(
+    `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`
+  );
+  namePosition.then((data) => updateLocation(data[0].name));
 }
-
-
-
-
-

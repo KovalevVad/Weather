@@ -4,7 +4,7 @@
   --white: #fff;
   --grey: rgba(161, 156, 160, 0.3);
   --whiteOpacity14: rgba(255, 255, 255, 0.14);
-  --whiteOpacity04 : rgba(255, 255, 255, 0.04);
+  --whiteOpacity04: rgba(255, 255, 255, 0.04);
   --whiteOpacity7: rgba(255, 255, 255, 0.7);
   --blue-ligth: #e9f3ff;
 
@@ -62,7 +62,7 @@ h1 {
 
 .wrapper__content-location > span:first-child,
 .wrapper__content-location > span:last-child,
-.rightContent > a  {
+.rightContent > a {
   font-weight: 400;
   font-size: 60px;
   color: var(--white);
@@ -139,7 +139,7 @@ h1 {
 }
 
 .result__box ul li:hover,
-.result__box1 ul li:hover{
+.result__box1 ul li:hover {
   background-color: var(--blue-ligth);
 }
 
@@ -172,7 +172,7 @@ h2 {
   gap: 26px;
 }
 
-.rightContent__details-item  span:last-child {
+.rightContent__details-item span:last-child {
   font-weight: 400;
   font-size: 18px;
   color: var(--white);
@@ -203,8 +203,7 @@ h2 {
   top: 60px;
 }
 
-
-@media (min-width:376px) and (max-width: 768px) {
+@media (min-width: 430px) and (max-width: 768px) {
   .wrapper {
     position: absolute;
     width: 768px;
@@ -230,7 +229,7 @@ h2 {
 
   .wrapper__content {
     left: 39px;
-    top: 267px;
+    top: 94px;
   }
 
   h1 {
@@ -267,11 +266,9 @@ h2 {
   .wrapper__search > input {
     font-size: 18px;
   }
-
-
 }
 
-@media (max-width:414px) {
+@media (max-width: 430px) {
   .wrapper {
     position: absolute;
     width: 100%;
@@ -340,7 +337,10 @@ h2 {
   }
 
   .rightContent {
+    display: flex;
+    align-items: center;
     padding: 0;
+    width: 100%;
   }
 
   .rightContent > a {

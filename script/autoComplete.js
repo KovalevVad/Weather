@@ -1,10 +1,9 @@
 import { appFetch } from "./helper.js";
-import { URL_CITY } from "./constants.js";
-
+import { Routers } from "./constants.js";
 
 let listCity = []
 async function getData() {
-  const data = await appFetch(URL_CITY);
+  const data = await appFetch(Routers.city);
   const list = data.map(element => element.name);
 
   listCity = [...new Set(list)]
@@ -12,10 +11,10 @@ async function getData() {
 
 getData();
 
-const resultBox = document.querySelector('.result__box')
+const resultBoxDesktop = document.querySelector('.result__box')
 const inputBoxDesktop = document.getElementById("autoComplete")
 
-const resultBox1 = document.querySelector('.result__box1')
+const resultBoxTablet = document.querySelector('.result__box1')
 const inputBoxTablet = document.getElementById("autoComplete1")
 
 
@@ -59,5 +58,5 @@ function autoComplete(inputBox, resultBox) {
   }
 }
 
-autoComplete(inputBoxDesktop, resultBox) //desktop
-autoComplete(inputBoxTablet, resultBox1) //tablet
+autoComplete(inputBoxDesktop, resultBoxDesktop) //desktop
+autoComplete(inputBoxTablet, resultBoxTablet) //tablet
